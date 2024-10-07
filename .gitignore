@@ -30,3 +30,4 @@ coverage
 *.tsbuildinfo
 .vscode
 .DS_Store
+firebase.js
