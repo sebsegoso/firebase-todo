@@ -6,7 +6,8 @@ import {
   deleteDoc,
   query,
   where,
-  doc
+  doc,
+  orderBy
 } from 'firebase/firestore'
 import { $db, $auth } from '@/firebase' // La referencia a Firestore configurada
 
@@ -20,7 +21,11 @@ export class ToDosService {
       }
 
       // Crear la consulta inicial
-      let q = query(collection($db, 'todos'), where('userId', '==', userId))
+      let q = query(
+        collection($db, 'todos'),
+        where('userId', '==', userId),
+        orderBy('createdAt', 'desc')
+      )
 
       const querySnapshot = await getDocs(q)
       const todos = []
