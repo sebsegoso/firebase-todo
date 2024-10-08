@@ -22,6 +22,7 @@ export const useToDoStore = defineStore('todo', () => {
   async function addToDo(task) {
     const newToDo = await service.addToDo({ task }) // Espera el objeto que se agrega
     todos.value.push(newToDo) // Agrega el nuevo todo a la lista
+    await fetchToDos() // Recargar la lista después de editar
   }
 
   // Editar tarea
